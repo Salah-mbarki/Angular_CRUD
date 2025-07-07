@@ -1,6 +1,7 @@
-# AngularCRUD
+# AngularCRUD Operations in local storage
 
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 18.2.7.
+I learned through this mini-project how to apply CRUD operations On a list stored locally without using any database
 
 ## Development server
 
