@@ -1,0 +1,86 @@
+<div class="row">
+  <div class="col-6">
+    <div class="card">
+      <div class="card header bg-success">
+        List of employees
+      </div>
+      <div class="card body">
+        <div class="row">
+          <div class="col-12">
+            <table class="table table-bordered">
+              <thead>
+                <tr>
+                  <th>EmpNO</th>
+                  <th>Name</th>
+                  <th>City</th>
+                  <th>EmailId</th>
+                  <th>ContactNo</th>
+                  <th class="text-center">Action</th>
+                </tr>
+              </thead>
+              <tbody>
+                @for (item of EmployeeList; track $index) {
+                  <tr>
+                    <td>{{$index}} </td>
+                    <td>{{item.Name}} </td>
+                    <td>{{item.City}} </td>
+                    <td>{{item.EmailId}} </td>
+                    <td>{{item.ContactNo}} </td>
+                    <td>
+                      <button class="btn btn-primary" (click)="OnEdit(item)">Edit</button>
+                      <button class="btn btn-danger mx-2" (click)="OnDelete(item.EmpId)">Delete</button>
+                    </td>
+                  </tr>
+                }
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="col-4">
+    <div class="card">
+      <div class="card header bg-success">
+        New Employee
+      </div>
+      <div class="card body">
+        <form [formGroup]="EmployeeForm">
+          <div class="row">
+            <div class="col-6">
+              <label>Name</label>
+              <input type="text" required class="form-control" formControlName="Name">
+            </div>
+            <div class="col-6">
+              <label>City</label>
+              <input type="text" required class="form-control" formControlName="City">
+            </div>
+            <div class="col-6">
+              <label>ContactNo</label>
+              <input type="text" required class="form-control" formControlName="ContactNo">
+            </div>
+            <div class="col-6">
+              <label>Email-Id</label>
+              <input type="text" required class="form-control" formControlName="EmailId">
+            </div>
+            <div class="row pt-2">
+              <div class="col-6 text-center">
+                <button type="reset" class="btn btn-secondary">reset</button>
+              </div>
+              <div class="col-6 text-center">
+                @if (this.EmployeeForm.controls['EmpId'].value=='1') {
+                  <button type="submit" class="btn btn-success" (click)="OnSave()">Submit</button>
+                }
+                @else {
+                  <button type="submit" class="btn btn-warning" (click)="OnUpdate()">Update</button>
+                }
+                
+              </div>
+            </div>
+          </div>
+        </form>
+        
+      </div>
+    </div>
+  </div>
+</div>
